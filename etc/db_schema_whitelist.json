@@ -1,0 +1,25 @@
+{
+    "sucuri_log": {
+        "column": {
+            "entity_id": true,
+            "full_date": true,
+            "checksum": true,
+            "request_date": true,
+            "request_time": true,
+            "remote_addr": true,
+            "request_method": true,
+            "resource_path": true,
+            "http_protocol": true,
+            "http_status": true,
+            "http_user_agent": true,
+            "sucuri_is_allowed": true,
+            "sucuri_is_blocked": true,
+            "sucuri_block_reason": true,
+            "request_country_name": true,
+            "website": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<?php /** @var \PixelOpen\Sucuri\Block\Adminhtml\Cache\Button $block */ ?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<?php /** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */ ?>
+<?php foreach ($block->getWebsites() as $website): ?>
+    <p>
+        <button id="flushJsCss<?= $escaper->escapeHtmlAttr($website->getId()) ?>" type="button">
+            <?= $escaper->escapeHtml(__('Flush Sucuri Cache for %1', $website->getName())); ?>
+        </button>
+        <?= /* @noEscape */ $secureRenderer->renderEventListenerAsTag(
+            'onclick',
+            'setLocation(\'' . $escaper->escapeJs($block->getUrl('pixel_sucuri/cache/flush', ['website_id' => $website->getId()])) . '\')',
+            'button#flushJsCss' . $website->getId()
+        ) ?>
+        <span><?= $escaper->escapeHtml(__('Clear the Website Firewall cache')) ?></span>
+    </p>
+<?php endforeach; ?>

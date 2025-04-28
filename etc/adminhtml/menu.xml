@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2025 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PixelOpen_Sucuri::management" title="Sucuri" translate="title" module="PixelOpen_Sucuri" sortOrder="60" parent="Magento_Backend::system" resource="PixelOpen_Sucuri::management"/>
+        <add id="PixelOpen_Sucuri::management_log" title="Logs" translate="title" module="PixelOpen_Sucuri" sortOrder="10" parent="PixelOpen_Sucuri::management" resource="PixelOpen_Sucuri::management_log"  action="pixel_sucuri/log"/>
+    </menu>
+</config>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (C) 2025 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sucuri_log" resource="default" engine="innodb">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" />
+        <column xsi:type="varchar" name="checksum" nullable="false" />
+        <column xsi:type="timestamp" name="full_date" nullable="true" />
+        <column xsi:type="varchar" name="request_date" length="12" nullable="true" />
+        <column xsi:type="varchar" name="request_time" length="8" nullable="true" />
+        <column xsi:type="varchar" name="remote_addr" nullable="true" />
+        <column xsi:type="varchar" name="request_method" nullable="true" />
+        <column xsi:type="varchar" name="resource_path" nullable="true" />
+        <column xsi:type="varchar" name="http_protocol" length="10" nullable="true" />
+        <column xsi:type="int" name="http_status" nullable="true" />
+        <column xsi:type="varchar" name="http_user_agent" nullable="true" />
+        <column xsi:type="smallint" name="sucuri_is_allowed" nullable="true" />
+        <column xsi:type="smallint" name="sucuri_is_blocked" nullable="true" />
+        <column xsi:type="varchar" name="sucuri_block_reason" nullable="true" />
+        <column xsi:type="varchar" name="request_country_name" nullable="true" />
+        <column xsi:type="smallint" name="website" unsigned="true" nullable="false" identity="false" default="0" />
+        <constraint xsi:type="unique" referenceId="SUCURI_LOG_UNIQUE_CHECKSUM">
+            <column name="checksum"/>
+        </constraint>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

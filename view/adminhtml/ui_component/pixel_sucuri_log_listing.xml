@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright (C) 2025 Pixel Développement
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">pixel_sucuri_log_listing.sucuri_log_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="refresh" class="PixelOpen\Sucuri\Block\Adminhtml\Log\Grid\RefreshButton" />
+        </buttons>
+        <spinner>sucuri_log_columns</spinner>
+        <deps>
+            <dep>pixel_sucuri_log_listing.sucuri_log_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="sucuri_log_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <filterUrlParams>
+                <param name="website">*</param>
+            </filterUrlParams>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>PixelOpen_Sucuri::management_log</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="sucuri_log_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="sucuri_log_columns">
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <visible>false</visible>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="full_date" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="15">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Date</label>
+            </settings>
+        </column>
+        <column name="request_date" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <visible>false</visible>
+                <label translate="true">Request Date</label>
+            </settings>
+        </column>
+        <column name="request_time" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <visible>false</visible>
+                <label translate="true">Request Time</label>
+            </settings>
+        </column>
+        <column name="remote_addr" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">IP</label>
+            </settings>
+        </column>
+        <column name="request_method" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Method</label>
+            </settings>
+        </column>
+        <column name="resource_path" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Path</label>
+            </settings>
+        </column>
+        <column name="http_protocol" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <visible>false</visible>
+                <label translate="true">Protocol</label>
+            </settings>
+        </column>
+        <column name="http_status" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="http_user_agent" sortOrder="90">
+            <settings>
+                <filter>text</filter>
+                <visible>false</visible>
+                <label translate="true">User Agent</label>
+            </settings>
+        </column>
+        <column name="sucuri_is_allowed" component="Magento_Ui/js/grid/columns/select" sortOrder="100">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <visible>false</visible>
+                <label translate="true">Is Allowed</label>
+            </settings>
+        </column>
+        <column name="sucuri_is_blocked" component="Magento_Ui/js/grid/columns/select" sortOrder="110">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Is Blocked</label>
+            </settings>
+        </column>
+        <column name="sucuri_block_reason" sortOrder="120">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Reason</label>
+            </settings>
+        </column>
+        <column name="request_country_name" sortOrder="130">
+            <settings>
+                <filter>text</filter>
+                <visible>false</visible>
+                <label translate="true">Country</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

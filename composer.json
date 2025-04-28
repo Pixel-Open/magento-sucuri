@@ -1,0 +1,29 @@
+{
+  "name": "pixelopen/magento-sucuri",
+  "description": "Add Sucuri API features to Magento: cache management and logs",
+  "require": {
+    "ext-curl": "*",
+    "magento/framework": "*",
+    "magento/module-backend": "*",
+    "magento/module-config": "*",
+    "magento/module-ui": "*",
+    "php": "^8"
+  },
+  "type": "magento2-module",
+  "version": "100.1.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "PixelOpen\\Sucuri\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Pixel Open",
+      "homepage": "https://pixel-open.org/",
+      "role": "Developer"
+    }
+  ]
+}
