@@ -61,7 +61,7 @@ class LogRepository implements LogRepositoryInterface
     /**
      * @throws LocalizedException|CouldNotSaveException
      */
-    protected function doRefresh(int $websiteId, int $offset = 0, int $total = 0): int
+    protected function doRefresh(int $websiteId, int $offset = 0): int
     {
         $result = $this->client->execute(
             'audit_trails',
@@ -80,6 +80,8 @@ class LogRepository implements LogRepositoryInterface
             throw new LocalizedException(__('The API request failed. Please check the configuration settings.'));
         }
 
+        $total = 0;
+
         foreach ($result as $request) {
             $log = $this->logInterfaceFactory->create();
             $log->setData($request);
@@ -93,7 +95,7 @@ class LogRepository implements LogRepositoryInterface
         }
 
         if (count($result) >= self::REQUEST_LIMIT) {
-            $this->doRefresh($websiteId, $offset + self::REQUEST_LIMIT, $total);
+            $total += $this->doRefresh($websiteId, $offset + self::REQUEST_LIMIT);
         }
 
         return $total;
