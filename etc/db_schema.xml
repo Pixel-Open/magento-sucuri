@@ -16,7 +16,7 @@
         <column xsi:type="varchar" name="request_time" length="8" nullable="true" />
         <column xsi:type="varchar" name="remote_addr" nullable="true" />
         <column xsi:type="varchar" name="request_method" nullable="true" />
-        <column xsi:type="varchar" name="resource_path" nullable="true" />
+        <column xsi:type="text" name="resource_path" nullable="true" />
         <column xsi:type="varchar" name="http_protocol" length="10" nullable="true" />
         <column xsi:type="int" name="http_status" nullable="true" />
         <column xsi:type="varchar" name="http_user_agent" nullable="true" />

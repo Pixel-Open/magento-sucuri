@@ -101,7 +101,7 @@
                 <label translate="true">Method</label>
             </settings>
         </column>
-        <column name="resource_path" sortOrder="60">
+        <column name="resource_path" class="PixelOpen\Sucuri\Ui\Component\Listing\Columns\ResourcePath" sortOrder="60">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Path</label>
@@ -153,7 +153,6 @@
         <column name="request_country_name" sortOrder="130">
             <settings>
                 <filter>text</filter>
-                <visible>false</visible>
                 <label translate="true">Country</label>
             </settings>
         </column>
