@@ -23,6 +23,16 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\HTTP\PhpEnvironment\RemoteAddress">
+        <arguments>
+            <argument name="alternativeHeaders" xsi:type="array">
+                <item name="http_x_sucuri_clienip" xsi:type="string">HTTP_X_SUCURI_CLIENTIP</item>
+                <item name="http_client_ip" xsi:type="string">HTTP_CLIENT_IP</item>
+                <item name="http_x_forwarded_for" xsi:type="string">HTTP_X_FORWARDED_FOR</item>
+                <item name="remote_addr" xsi:type="string">REMOTE_ADDR</item>
+            </argument>
+        </arguments>
+    </type>
     <preference for="PixelOpen\Sucuri\Api\Data\LogInterface" type="PixelOpen\Sucuri\Model\Log" />
     <preference for="PixelOpen\Sucuri\Api\LogRepositoryInterface" type="PixelOpen\Sucuri\Model\LogRepository" />
 </config>

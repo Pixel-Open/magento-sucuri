@@ -1,6 +1,7 @@
 ## 100.1.2
 
 - New cron task for log retention
+- Try to retrieve real customer client IP
 
 ## 100.1.1
 
