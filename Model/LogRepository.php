@@ -11,12 +11,14 @@ namespace PixelOpen\Sucuri\Model;
 
 use Exception;
 use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use PixelOpen\Sucuri\Api\Data\LogInterface;
 use PixelOpen\Sucuri\Api\Data\LogInterfaceFactory;
 use PixelOpen\Sucuri\Api\LogRepositoryInterface;
 use PixelOpen\Sucuri\Model\ResourceModel\LogFactory as LogResourceFactory;
+use PixelOpen\Sucuri\Model\ResourceModel\Log\CollectionFactory as LogResourceCollectionFactory;
 
 class LogRepository implements LogRepositoryInterface
 {
@@ -24,6 +26,7 @@ class LogRepository implements LogRepositoryInterface
 
     public function __construct(
         protected LogResourceFactory $logResourceFactory,
+        protected LogResourceCollectionFactory $logResourceCollectionFactory,
         protected LogInterfaceFactory $logInterfaceFactory,
         protected Client $client,
     ) {
@@ -48,6 +51,31 @@ class LogRepository implements LogRepositoryInterface
         }
 
         return $log;
+    }
+
+    /**
+     * @throws CouldNotDeleteException
+     */
+    public function clean(string $toDate): int
+    {
+        $resource = $this->logResourceFactory->create();
+
+        $collection = $this->logResourceCollectionFactory->create();
+        $collection->addFieldToFilter('full_date', ['to' => $toDate]);
+
+        /** @var Log $item */
+        foreach ($collection->getItems() as $item) {
+            try {
+                $resource->delete($item);
+            } catch (Exception $exception) {
+                throw new CouldNotDeleteException(
+                    __('Could not delete the log: %1', $exception->getMessage()),
+                    $exception
+                );
+            }
+        }
+
+        return $collection->getSize();
     }
 
     /**

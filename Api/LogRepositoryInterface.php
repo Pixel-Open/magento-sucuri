@@ -32,4 +32,13 @@ interface LogRepositoryInterface
      * @throws LocalizedException|CouldNotSaveException
      */
     public function refresh(int $websiteId): int;
+
+    /**
+     * Clean logs
+     *
+     * @param string $toDate
+     * @return int
+     * @throws LocalizedException|CouldNotSaveException
+     */
+    public function clean(string $toDate): int;
 }

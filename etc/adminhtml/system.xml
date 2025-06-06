@@ -28,9 +28,14 @@
             <group id="cron" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>Cron</label>
                 <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Enabled</label>
+                    <label>Refresh Logs</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Automatically refresh logs every hour</comment>
+                </field>
+                <field id="retention_period" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log retention (days)</label>
+                    <comment>Keep logs for the specified number of days. Enter 0 for unlimited duration.</comment>
+                    <validate>required-entry validate-digits validate-not-negative-number</validate>
                 </field>
             </group>
         </section>

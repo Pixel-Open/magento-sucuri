@@ -29,3 +29,7 @@
 "Is Blocked","Is Blocked"
 "Reason","Reason"
 "Country","Country"
+"Refresh Logs","Refresh Logs"
+"Log retention (days)","Log retention (days)"
+"Automatically refresh logs every hour","Automatically refresh logs every hour"
+"Keep logs for the specified number of days. Enter 0 for unlimited duration.","Keep logs for the specified number of days. Enter 0 for unlimited duration."

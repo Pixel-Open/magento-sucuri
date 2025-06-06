@@ -29,3 +29,7 @@
 "Is Blocked","Bloqué"
 "Reason","Motif"
 "Country","Pays"
+"Refresh Logs","Actualiser les logs"
+"Log retention (days)","Conservation des logs (en jours)"
+"Automatically refresh logs every hour","Actualiser automatiquement les logs toutes les heures"
+"Keep logs for the specified number of days. Enter 0 for unlimited duration.","Conserver les logs pendant le nombre de jours spécifié. Indiquer 0 pour un temps illimité."

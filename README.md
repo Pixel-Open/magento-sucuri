@@ -77,4 +77,8 @@ System > Sucuri > Logs > Refresh
 
 ### Automatically refresh logs every hour
 
-Stores > Configuration > Service > Sucuri > Cron > Enabled
+Stores > Configuration > Service > Sucuri > Cron > Refresh Logs
+
+### Log retention
+
+Stores > Configuration > Service > Sucuri > Cron > Log retention (days)

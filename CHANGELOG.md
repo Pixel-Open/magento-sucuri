@@ -1,3 +1,7 @@
+## 100.1.2
+
+- New cron task for log retention
+
 ## 100.1.1
 
 - Fix total lines when more than limit

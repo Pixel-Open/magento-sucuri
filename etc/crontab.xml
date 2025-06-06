@@ -12,5 +12,8 @@
         <job name="pixel_open_sucuri_cron_refresh_logs" instance="PixelOpen\Sucuri\Cron\Log\Refresh" method="execute">
             <schedule>0 * * * *</schedule>
         </job>
+        <job name="pixel_open_sucuri_cron_clean_logs" instance="PixelOpen\Sucuri\Cron\Log\Clean" method="execute">
+            <schedule>1 0 * * *</schedule>
+        </job>
     </group>
 </config>

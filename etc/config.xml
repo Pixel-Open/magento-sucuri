@@ -15,6 +15,7 @@
             </api>
             <cron>
                 <enabled>0</enabled>
+                <retention_period>60</retention_period>
             </cron>
         </pixel_open_sucuri>
     </default>
